@@ -10,10 +10,52 @@
 	</div>
 	<div style="text-align: center;margin-top: 30px">
 		Recorder is a tool to help people to record voice. 
+		<br>
+		We hope your advice to improve our software, you can send us your 
+		advice below or send us a email.
+	</div>
 
+	<div style="text-align: center;margin-top: 20px">
+		<textarea id="advice" rows="10" cols="50">
+		</textarea> 
+	<br>
+	<button onclick="sendMessage()">
+		send
+	</button>
+	</div>
+	<div style="margin-top: 20px;text-align: center;">
+		Contact us 
+		<br>
+		Email : cloormu258@yeah.net
 	</div>
 	<div style="text-align: center;margin-top: 20px">
 		<a href="https://kimbleyz.github.io/privacityPages/">Privacy policy url </a>
 	</div>
+	<script type="text/javascript">
+		function sendMessage(){
+			var text = document.getElementById('advice').value;
+			var xmlhttp ;
+			if (window.XMLHttpRequest) {
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function (){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					document.getElementById('advice').value = '';
+					alert('Send success!');
+
+				}else if(xmlhttp.readyState == 4){
+					alert('Send failed!');
+				}
+			}
+			xmlhttp.open("POST",'http://47.91.155.164:9090/common/saveDataWithParam',true);
+			// xmlhttp.open("POST",'http://192.168.1.204:8081/common/saveDataWithParam',true);
+			// xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+			xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+			xmlhttp.send('key_key=recorder advice&value_value='+text);
+		}
+	</script>
 </body>
 </html>
