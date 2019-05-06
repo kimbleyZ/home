@@ -51,7 +51,7 @@
 			}
 			xmlhttp.open("POST",'http://47.75.2.147:9090/common/saveDataWithParam',true);
 			// xmlhttp.open("POST",'http://192.168.1.204:8081/common/saveDataWithParam',true);
-			// xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+			xmlhttp.setRequestHeader('Access-Control-Allow-Origin','*');
 			xmlhttp.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
 			xmlhttp.send('key_key=recorder advice&value_value='+text);
